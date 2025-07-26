@@ -1,0 +1,248 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attendance_details",
+  "naming_series",
+  "employee",
+  "employee_name",
+  "attendance_date",
+  "company",
+  "department",
+  "column_break_0",
+  "custom_status",
+  "work_location",
+  "project",
+  "task",
+  "overtime_hours",
+  "attendance_note",
+  "details_section",
+  "in_time",
+  "out_time",
+  "working_hours",
+  "late_entry",
+  "early_exit",
+  "verification_section",
+  "attendance_verified_by",
+  "verification_date",
+  "verification_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "attendance_details",
+   "fieldtype": "Section Break",
+   "label": "考勤详情"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "编号系列",
+   "options": "CUSTOM-ATT-.YYYY.-",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "员工",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "员工姓名",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attendance_date",
+   "fieldtype": "Date",
+   "label": "考勤日期",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "employee.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "公司",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "部门",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_status",
+   "fieldtype": "Select",
+   "label": "考勤状态",
+   "options": "\n正常出勤\n加班\n出差\n培训\n会议\n病假\n事假\n年假\n调休\n其他",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "work_location",
+   "fieldtype": "Select",
+   "label": "工作地点",
+   "options": "\n办公室\n远程办公\n出差\n客户现场\n其他"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "项目",
+   "options": "Project"
+  },
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "任务",
+   "options": "Task",
+   "depends_on": "project"
+  },
+  {
+   "fieldname": "overtime_hours",
+   "fieldtype": "Float",
+   "label": "加班时长(小时)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "attendance_note",
+   "fieldtype": "Small Text",
+   "label": "考勤备注"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "时间详情"
+  },
+  {
+   "fieldname": "in_time",
+   "fieldtype": "Datetime",
+   "label": "签到时间"
+  },
+  {
+   "fieldname": "out_time",
+   "fieldtype": "Datetime",
+   "label": "签退时间"
+  },
+  {
+   "fieldname": "working_hours",
+   "fieldtype": "Float",
+   "label": "工作时长",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "late_entry",
+   "fieldtype": "Check",
+   "label": "迟到"
+  },
+  {
+   "fieldname": "early_exit",
+   "fieldtype": "Check",
+   "label": "早退"
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "确认信息"
+  },
+  {
+   "fieldname": "attendance_verified_by",
+   "fieldtype": "Link",
+   "label": "考勤确认人",
+   "options": "User"
+  },
+  {
+   "fieldname": "verification_date",
+   "fieldtype": "Datetime",
+   "label": "确认时间",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_note",
+   "fieldtype": "Small Text",
+   "label": "确认备注"
+  }
+ ],
+ "icon": "fa fa-calendar-check-o",
+ "idx": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Custom Attendance",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "search_fields": "employee,employee_name,attendance_date,custom_status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "employee_name",
+ "track_changes": 1
+}
